@@ -1,25 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Header from "./components/Header";
+import FuncHeader from "./components/FuncHeader";
+import DetailComponent from "./components/DetailComponent"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <header className="App-header">
+          <Header title="Main title" subTitle="subtitle" />
+          <Header title="Another Main title" />
+          <FuncHeader title="Functional header" />
+          <Route
+          path="detail"
+          exact
+          render={(props)=> <DetailComponent {...props} title="hello" />}/>
+        </header>
+      </div>
+    </Router>
   );
 }
 
